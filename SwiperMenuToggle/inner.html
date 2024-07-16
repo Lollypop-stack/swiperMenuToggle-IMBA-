@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню на свайпе</title>
+    <script src="https://unpkg.com/eva-icons"></script>
+    <link rel="stylesheet" href="inner.css">
+    <script src="inner.js"></script>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="logo">TaSH1ROO</div>
+            <div class="nav-links">
+                <button class="menu-button" id="menu-button" easy-add="#swipe-menu" easy-class="active"><i
+                       data-eva="menu-outline" data-eva-fill="#c89398" data-eva-height="30" data-eva-width="30"
+                       data-eva-animation="flip"></i></button>
+            </div>
+        </div>
+        <div class="swipe-menu" id="swipe-menu">
+            <div class="swipe-menu_nav-links">
+                <button class="swipe-menu-close" id="swipe-menu-close" easy-remove="#swipe-menu"
+                        easy-class="active">x</button>
+                <a href="#" class="nav-links-link">Home</a>
+                <a href="#" class="nav-links-link">Usage</a>
+                <a href="#" class="nav-links-link">Add</a>
+                <a href="#" class="nav-links-link">Magazine</a>
+            </div>
+        </div>
+        <div class="swipe-menu-overlay" id="swipe-menu-overlay" easy-class="active"></div>
+    </div>
+</body>
+<script>
+    eva.replace();
+
+    let mc = new Hammer(document.body);
+    const swipeMenu = document.querySelector('#swipe-menu').classList;
+    const swipeMenuOverlay = document.querySelector('#swipe-menu-overlay').classList;
+    const activeClassMenu = 'active';
+
+    mc.on("swipeleft swiperight", function (ev) {
+        if (ev.type === "swiperight") {
+            swipeMenu.add(activeClassMenu);
+            swipeMenuOverlay.add(activeClassMenu);
+        } else {
+            swipeMenu.remove(activeClassMenu);
+            swipeMenuOverlay.remove(activeClassMenu);
+        }
+    });
+</script>
+
+</html>
